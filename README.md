@@ -553,49 +553,41 @@ Implementation requirements:
 
 <b>Input format</b>
 
-The first line contains the total number of queries to the table, \( n \) (\( 1 \leq n \leq 10^6 \)). The following \( n \) lines contain queries, which can be of three types: get, put, delete, as described in the task.
+The first line contains the total number of queries to the table, n (1≤ n≤ 10^6). The following n  lines contain queries, which can be of three types: get, put, delete, as described in the task.
 
-All keys and values are integers, not exceeding \( 10^9 \) in absolute value. Numbers can be negative as well.
+All keys and values are integers, not exceeding 10^9 in absolute value. Numbers can be negative as well.
 
-For any sequence of commands, the number of keys in the hash table cannot exceed \( 10^5 \).
+For any sequence of commands, the number of keys in the hash table cannot exceed 10^5.
 
 <b>Output format</b>
 
-На каждый запрос вида get и delete выведите ответ на него в отдельной строке.
-
+For each query of type get and delete, output the corresponding answer on a separate line.
 
 <b> Work principle </b>
 
 
-Написала мапу с разрешением коллизий методом цепочек. Если нужно добавить значение,
-сначала проверяю, нет ли в списке уже такого ключа. Если есть, записываю для него новое значение.
-Если нет, создаю новую ноду и сохраняю ее в качестве головы связного списка.
-Для того, чтобы получить значение, высчитываю номер бакета и ищу нужный ключ по всему связному списку
-в этом бакете. Если ключ находится, возвращаю связанное с ним значение. Если нет, то возвращаю None.
-Для операции удаления ищу нужный ключ. Если нода была в начале списка, то сохраняю новое начало в бакете.
-Если в середине, то вырезаю ноду, сохраняя в предыдущей ноде ссылку на последующую.
+I implemented a map using the method of resolving collisions with chaining. When adding a value, I first check if there is already a key in the list. If it exists, I update its value. If not, I create a new node and store it as the head of the linked list.
 
+To retrieve a value, I calculate the bucket number and search for the desired key throughout the linked list in that bucket. If the key is found, I return the associated value. If not, I return None.
+
+For the delete operation, I search for the required key. If the node was at the beginning of the list, I save the new head in the bucket. If it's in the middle, I cut out the node, preserving the reference to the next one in the previous node.
 
 
 <b> The proof of correctness </b>
 
-Для того, чтобы значения распределялись более равномерно, размер массива - это 2 в степени 16.
-Номер бакета определяется с помощью побитового И.
+To distribute values more evenly, the size of the array is chosen as 2 to the power of 16. The bucket number is determined using bitwise AND.
 
 
 
 
 <b> Time complexity </b>
 
-Все ноды хранятся в массиве. Скорость чтения и добавления элемента в массив - O(1). При хорошей
-распределенности поиск, удаление и добавление будут стоить O(1). Значит, для n команд сложность будет
-O(n).
+All nodes are stored in the array. The speed of reading and adding an element to the array is O(1). With good distribution, search, deletion, and addition will cost O(1). Therefore, for n commands, the complexity will be O(n).
 
 
 <b> Space complexity </b>
 
-В худшем случае все команды будут на добавление данных в массив, и сложность будет O(n), где n - количество команд.
-
+In the worst case, all commands will involve adding data to the array, and the complexity will be O(n), where n is the number of commands.
 
 
 </details>
@@ -611,15 +603,15 @@ O(n).
 
 <a href="HeapSort.java">Code</a>
 
-В данной задаче необходимо реализовать сортировку кучей. При этом кучу необходимо реализовать самостоятельно, использовать имеющиеся в языке реализации нельзя. Сначала рекомендуется решить задачи про просеивание вниз и вверх.
+In this task, you need to implement heap sort. The heap should also be implemented independently; using existing language implementations is not allowed. It is recommended to first solve problems related to heapify operations (sifting down and up).
 
-Тимофей решил организовать соревнование по спортивному программированию, чтобы найти талантливых стажёров. Задачи подобраны, участники зарегистрированы, тесты написаны. Осталось придумать, как в конце соревнования будет определяться победитель.
+Timotheus decided to organize a programming competition to find talented interns. The problems have been selected, participants have been registered, and tests have been written. Now it remains to figure out how to determine the winner at the end of the competition.
 
-Каждый участник имеет уникальный логин. Когда соревнование закончится, к нему будут привязаны два показателя: количество решённых задач Pi и размер штрафа Fi. Штраф начисляется за неудачные попытки и время, затраченное на задачу.
+Each participant has a unique login. When the competition is over, two indicators will be associated with each participant: the number of solved problems \( P_i \) and the penalty size \( F_i \). The penalty is charged for unsuccessful attempts and the time spent on the problem.
 
-Тимофей решил сортировать таблицу результатов следующим образом: при сравнении двух участников выше будет идти тот, у которого решено больше задач. При равенстве числа решённых задач первым идёт участник с меньшим штрафом. Если же и штрафы совпадают, то первым будет тот, у которого логин идёт раньше в алфавитном (лексикографическом) порядке.
+Timotheus decided to sort the results table as follows: when comparing two participants, the one with more solved problems comes first. In case of a tie in the number of solved problems, the participant with a smaller penalty comes first. If the penalties are also equal, the one whose login comes first in alphabetical (lexicographic) order is placed first.
 
-Тимофей заказал толстовки для победителей и накануне поехал за ними в магазин. В своё отсутствие он поручил вам реализовать алгоритм сортировки кучей (англ. Heapsort) для таблицы результатов.
+Timotheus ordered sweatshirts for the winners and went to the store the day before. In his absence, he entrusted you to implement the heapsort algorithm for the results table.
 
 <table>
     <tbody>
@@ -650,34 +642,27 @@ O(n).
 
 <b>Input format</b>
 
-В первой строке задано число участников n, 1 ≤ n ≤ 100 000.
-В каждой из следующих n строк задана информация про одного из участников.
-i-й участник описывается тремя параметрами:
-<ul>
-<li>уникальным логином (строкой из маленьких латинских букв длиной не более 20)</li>
-<li>числом решённых задач Pi</li>
-<li>штрафом Fi</li>
-</ul>
-Fi и Pi — целые числа, лежащие в диапазоне от 0 до 109.
+The first line contains the number of participants n, 1 ≤ n ≤ 100 000. In each of the next \( n \) lines, information about one participant is provided. The \( i \)-th participant is described by three parameters:
+
+- A unique login (a string of lowercase Latin letters with a length of at most 20).
+- The number of problems solved P_i.
+- The penalty F_i.
+
+Both F_i and P_i are integers in the range from 0 to 10^9.
 
 <b>Output format</b>
 
-Для отсортированного списка участников выведите по порядку их логины по одному в строке.
-
+For the sorted list of participants, output their logins one per line in the given order.
 
 <b> Work principle </b>
 
 
-Пирамидальная сортировка реализуется с помощью бинарной кучи. Сначала добавляем все элементы в дерево
-с помощью просеивания вверх (меняем дочерный узел и родительский местами, если дочерний элемент больше родительского). Затем удаляем корень каждый раз (это первый элемент), заменяем на последний элемент и
-просеиваем вниз (меняем родительский узел и дочерний местами, если родительский меньше дочернего), пока не знакончатся элементы. Для сравнения элементов написан метод compareTo.
-
+Heap sort is implemented using a binary heap. Initially, all elements are added to the tree using sift-up (swapping child and parent if the child is greater than the parent). Then, the root is removed each time (which is the first element), replaced with the last element, and sifted down (swapping parent and child if the parent is smaller than the child) until there are no more elements. A compareTo method is written to compare elements.
 
 
 <b> The proof of correctness </b>
 
-Свойства невозврастающей кучи таковы, что в корне будет всегда находиться самый большой элемент. Каждый раз,
-когда мы его выводим и удаляем, проводится просеивание вниз, которое восстанавливает свойство кучи.
+The properties of a max heap are such that the largest element is always at the root. Every time we extract and remove it, a sift-down operation is performed, which restores the heap property.
 
 
 
@@ -685,15 +670,12 @@ Fi и Pi — целые числа, лежащие в диапазоне от 0 
 
 <b> Time complexity </b>
 
-Для каждого элемента мы делаем два действия: вставляем и просеиваем вверх, удаляем и просеиваем вниз. Просеивание
-стоит O(log n), так как на каждом уровне мы проводим только одно сравнение элемента.
-Временная сложность: O(n * 2 log n) -> O(n log n)
+For each element, two operations are performed: insertion with sift-up and removal with sift-down. Sifting operations have a time complexity of O(log n) since, at each level, only one element comparison is made. Therefore, the overall time complexity is O(n * 2 log n) -> O(n log n).
 
 
 <b> Space complexity </b>
 
-Требуется массив для хранения дерева, который содержит n элементов для сортировки. Пространственная сложность - O(n).
-
+An array is required to store a tree that contains n elements for sorting. The spatial complexity is O(n).
 
 </details>
 
@@ -704,50 +686,35 @@ Fi и Pi — целые числа, лежащие в диапазоне от 0 
 
 <a href="RemoveNode.java">Code</a>
 
-Дано бинарное дерево поиска, в котором хранятся ключи. Ключи — уникальные целые числа. Найдите вершину с заданным ключом и удалите её из дерева так, чтобы дерево осталось корректным бинарным деревом поиска. Если ключа в дереве нет, то изменять дерево не надо.
-На вход вашей функции подаётся корень дерева и ключ, который надо удалить. Функция должна вернуть корень изменённого дерева. Сложность удаления узла должна составлять O(h), где h –— высота дерева.
-Создавать новые вершины (вдруг очень захочется) нельзя.
+Given a binary search tree storing unique integer keys, find the node with a specified key and remove it from the tree, ensuring that the tree remains a valid binary search tree. If the key is not present in the tree, there is no need to modify the tree. The function takes the root of the tree and the key to be deleted as input and should return the root of the modified tree. The time complexity of the node deletion should be O(h), where h is the height of the tree. Creating new nodes is not allowed.
 
 
 <b>Input format</b>
 
-Ключи дерева – натуральные числа, не превышающие 10^9. В итоговом решении не надо определять свою структуру/свой класс, описывающий вершину дерева.
-
+The keys of the tree are natural numbers not exceeding 10^9. In the final solution, there is no need to define your own structure/class describing the tree node.
 
 
 <b> Work principle </b>
 
 
-Сначала проверяю, есть ли вообще дерево. Потом ищу элемент, который нужно заменить, и его родительскую ноду.
-Если элемента нет, ничего не делаю, возвращаю корень.  
-Если элемент есть, проверяю, можно ли найти элемент на замену. Если есть левая часть, ищу там самый правый элемент.
-Если нет левой части, но есть правая часть, ищу самый левый элемент в ней. Для элементов на замену есть два кейса -
-когда между элементом на замену и элементом на удаление есть как минимум одна вершина, и когда элемент на замену
-идет сразу после вершины. В зависимости от этого выставляю в элементе на замену новых потомков.
-Если нет ни левой, ни правой части, элемент на замену остается null.  
-Если у элемента на замену нет родителя, значит удаляем корень и возвращаем элемент на замену.
-Если родитель есть, ставим в качестве нужного нам потомка элемент на замену.
+First, I check if there is a tree at all. Then, I search for the element that needs to be replaced, and its parent node. If the element is not present, I do nothing and return the root.
+If the element is present, I check if it is possible to find a replacement element. If there is a left part, I search for the rightmost element in it. If there is no left part but there is a right part, I search for the leftmost element in it. For replacement elements, there are two cases: when there is at least one vertex between the replacement element and the element to be deleted, and when the replacement element comes immediately after the vertex. Depending on this, I set the new children in the replacement element. If there is neither a left nor a right part, the replacement element remains null.
+If the replacement element has no parent, it means we are deleting the root and return the replacement element. If there is a parent, I set the replacement element as the required child.
 
 
 <b> The proof of correctness </b>
 
-Чтобы удалить элемент и сохранить структуру дерева, нужно на его место поставить элемент, который будет корректно разделать
-два оставшихся поддерева. Это должен быть самый большой элемент из левой части или самый маленький из правой.
-
+To delete an element and preserve the tree structure, you need to replace it with an element that will correctly separate the two remaining subtrees. This should be the largest element from the left part or the smallest from the right.
 
 
 
 <b> Time complexity </b>
 
-Сначала ищем нужный элемент за O(H) в худшем случае, где H - это высота дерева. Если это O(H), тогда это лист, у которого нет потомков, и элемент на замену
-будет null, а значит сложность не изменится.
-Если элемент в середине, тогда ищем его за O(H - n), высота поддерева. Затем ищем элемент на замену за O(n).  
-В итоге O(H - n + n) -> O(H).
+First, we search for the required element in O(H) in the worst case, where H is the height of the tree. If it's O(H), then it's a leaf with no children, and the replacement element will be null, so the complexity won't change. If the element is in the middle, we search for it in O(H - n), the height of the subtree. Then we search for the replacement element in O(n). In the end, O(H - n + n) -> O(H).
 
 <b> Space complexity </b>
 
-Сохраняем отдельно элемент на удаление и его родительский элемент, а также элемент на замену и его родительский элемент.  
-Сложность O(4) -> O(1).
+Saving the element to be deleted along with its parent and the replacement element with its parent separately. Complexity O(4) -> O(1).
 
 
 </details>
@@ -763,11 +730,11 @@ Fi и Pi — целые числа, лежащие в диапазоне от 0 
 
 <a href="ExpensiveNet.java">Code</a>
 
-Тимофей решил соединить все компьютеры в своей компании в единую сеть. Для этого он придумал построить минимальное остовное дерево, чтобы эффективнее использовать ресурсы.
+Timofey decided to connect all computers in his company into a single network. To achieve this, he came up with the idea of building a minimum spanning tree to use resources more efficiently.
 
-Но от начальства пришла новость о том, что выделенный на сеть бюджет оказался очень большим и его срочно надо израсходовать. Поэтому Тимофея теперь интересуют не минимальные, а максимальные остовные деревья.
+However, news came from the management that the allocated budget for the network turned out to be very large, and it urgently needs to be spent. Therefore, Timofey is now interested in finding not the minimum, but the maximum spanning trees.
 
-Он поручил вам найти вес такого максимального остовного дерева в неориентированном графе, который задаёт схему офиса.
+He has assigned you the task of finding the weight of such a maximum spanning tree in an undirected graph that represents the office layout.
 
 <table>
     <tbody>
@@ -796,45 +763,36 @@ Fi и Pi — целые числа, лежащие в диапазоне от 0 
 
 <b>Input format</b>
 
-В первой строке дано количество вершин n и ребер m графа (1 ≤ n ≤ 1000, 0 ≤ m ≤ 100000).
+The first line contains the number of vertices n and edges m in the graph (1 ≤ n ≤ 1000, 0 ≤ m ≤ 100000).
 
-В каждой из следующих m строк заданы рёбра в виде троек чисел u, v, w. u и v — вершины, которые соединяет это ребро. w — его вес ( 1 ≤ u, v ≤ n, 0 ≤ w ≤ 10000). В графе могут быть петли и кратные ребра. Граф может оказаться несвязным.
+Each of the next m lines describes an edge with three numbers u, v, w. u and v are the vertices connected by this edge, and w is its weight (1 ≤ u, v ≤ n, 0 ≤ w ≤ 10000). The graph may contain loops and multiple edges. The graph may be disconnected.
 
 <b>Output format</b>
 
-Если максимальное остовное дерево существует, то выведите его вес. Иначе (если в графе несколько компонент связности) выведите фразу «Oops! I did it again».
+If a maximum spanning tree exists, output its weight. Otherwise, (if the graph has multiple connected components), output the phrase "Oops! I did it again."
 
 <b> Work principle </b>
 
 
-Чтобы построить остовное дерево, я использовала алгоритм Прима. Есть set вершин, которые уже есть в остове и set для тех, которые еще не добавлены.
-Также создана мапа с ребрами и их весом. Когда я добавляю вершину в added, я также добавляю все ее ребра в мапу.
-Потом из этой мапы ищу самое большое значение для тех вершин, которых еще нет в added.
-И так до тех пор, пока не закончатся ребра или не закончатся вершины. Если вершины еще не закончились, а ребра уже да,
-значит в графе несколько компонент связности.
+To build a spanning tree, I used Prim's algorithm. There is a set of vertices that are already in the tree and a set for those that are not yet added. Additionally, a map with edges and their weights is created. When I add a vertex to the added set, I also add all its edges to the map. Then, I search for the largest value in this map for the vertices that are not yet in the added set. I repeat this process until there are no more edges or vertices. If there are remaining vertices but no more edges, it means there are multiple connected components in the graph.
 
 
 
 <b> The proof of correctness </b>
 
-Так как мы сохраняем и посещенные, и непосещенные вершины, мы можем отследить, записали ли мы в остов все вершины по
-одному разу.
+Since we keep track of both visited and unvisited vertices, we can determine if we have added all vertices exactly once to the spanning tree.
 
 
 
 
 <b> Time complexity </b>
 
-Сложность алгоритма O(log(V) * E), так как используется очередь с приоритетом, для которой вставка и удаление элемента
-происходят за O(logV). V - количество вершин, E — количество ребер в графе.
+The complexity of the algorithm is O(log(V) * E) since it utilizes a priority queue, where insertion and deletion operations are performed in O(logV) time. Here, V is the number of vertices, and E is the number of edges in the graph.
 
 
 <b> Space complexity </b>
 
-Есть матрица для хранения графа(V*V), приоритетная очередь для хранения ребер(E) и массив для хранения информации о
-добавленных вершинах (V). Следовательно, пространственная сложность — O(V^2 + E + V) -> O(V^2 + E), где V - количество вершин,
-
-E — количество ребер в графе.
+There is a matrix to store the graph (V*V), a priority queue to store the edges (E), and an array to store information about added vertices (V). Therefore, the spatial complexity is O(V^2 + E + V) -> O(V^2 + E), where V is the number of vertices, and E is the number of edges in the graph.
 
 
 
@@ -847,13 +805,13 @@ E — количество ребер в графе.
 
 <a href="Railways.java">Code</a>
 
-В стране X есть n городов, которым присвоены номера от 1 до n. Столица страны имеет номер n. Между городами проложены железные дороги.
+In country X, there are n cities numbered from 1 to n. The capital of the country has the number n. Iron roads connect the cities.
 
-Однако дороги могут быть двух типов по ширине полотна. Любой поезд может ездить только по одному типу полотна. Условно один тип дорог помечают как R, а другой как B. То есть если маршрут от одного города до другого имеет как дороги типа R, так и дороги типа B, то ни один поезд не сможет по этому маршруту проехать. От одного города до другого можно проехать только по маршруту, состоящему исключительно из дорог типа R или только из дорог типа B.
+However, the roads can be of two types based on the width of the track. Any train can only travel on one type of track. Conventionally, one type of road is marked as R, and the other as B. This means that if the route from one city to another has both R-type and B-type roads, then no train will be able to travel on this route. One can travel from one city to another only on a route consisting exclusively of R-type roads or only of B-type roads.
 
-Но это ещё не всё. По дорогам страны X можно двигаться только от города с меньшим номером к городу с большим номером. Это объясняет большой приток жителей в столицу, у которой номер n.
+But that's not all. In country X, you can only move along the roads from a city with a smaller number to a city with a larger number. This explains the large influx of residents to the capital, which has the number n.
 
-Карта железных дорог называется оптимальной, если не существует пары городов A и B такой, что от A до B можно добраться как по дорогам типа R, так и по дорогам типа B. Иными словами, для любой пары городов верно, что от города с меньшим номером до города с бОльшим номером можно добраться по дорогам только какого-то одного типа или же что маршрут построить вообще нельзя. Выясните, является ли данная вам карта оптимальной.
+The map of iron roads is called optimal if there is no pair of cities A and B such that it is possible to reach from A to B both via R-type roads and via B-type roads. In other words, for any pair of cities, it is true that from the city with a smaller number to the city with a larger number, you can only travel on roads of a certain type, or it is impossible to build a route at all. Determine whether the given map is optimal.
 
 <table>
     <tbody>
@@ -878,42 +836,34 @@ E — количество ребер в графе.
 
 <b>Input format</b>
 
-В первой строке дано число n (1 ≤ n ≤ 5000) — количество городов в стране. Далее задана карта железных дорог в следующем формате.
+The first line contains the number n (1 ≤ n ≤ 5000) — the number of cities in the country. The map of iron roads is then provided in the following format.
 
-Карта задана n-1 строкой. В i-й строке описаны дороги из города i в города i+1, i+2, ..., n. В строке записано n - i символов, каждый из которых либо R, либо B. Если j-й символ строки i равен «B», то из города i в город i + j идет дорога типа «B». Аналогично для типа «R».
+The map is represented by n-1 lines. In the i-th line, roads from city i to cities i+1, i+2, ..., n are described. The line contains n - i characters, each of which is either R or B. If the j-th character of the i-th line is "B", then there is a road of type "B" from city i to city i + j. Similarly, for the type "R".
 
 <b>Output format</b>
 
-Выведите «YES», если карта оптимальна, и «NO» в противном случае.
+Output "YES" if the map is optimal, and "NO" otherwise.
 
 <b> Work principle </b>
 
 
-Поиск циклов осуществляется с помощью DFS — если при проверке вершин какая-то из них оказывается серой, то есть с ней еще не завершена работа, значит в графе есть цикл.
-
+The cycle detection is performed using DFS. If during the verification of vertices, one of them turns out to be gray (i.e., the work with it is not yet finished), then there is a cycle in the graph.
 
 
 <b> The proof of correctness </b>
 
-Мы знаем, что дан направленный граф, где все ребра направлены в одну сторону от города с меньшим номером к большему.
-Так как у нас есть два вида дорог, чтобы различать их, можно тип 'B' развернуть от последей вершины к первой. Так R-дороги
-будут направлены от меньшего города к большему, а B-дороги — от большего к меньшему.
-Если это сделать, в тех графах, в которых к хотя бы одной из вершин есть 2 пути, появятся циклы.
-
+We know that a directed graph is given, where all edges are directed in one direction from the city with a smaller number to the larger one. Since we have two types of roads to distinguish them, we can reverse the 'B' type from the last vertex to the first one. This way, R-roads will be directed from the smaller city to the larger one, and B-roads will be directed from the larger city to the smaller one. If we do this, in graphs where there are at least two paths to any vertex, cycles will appear.
 
 
 
 
 <b> Time complexity </b>
 
-Так как граф хранится в виде списков смежности, сложность DFS будет O(V + E), где V - количество вершин, E — количество ребер в графе.
+Since the graph is represented as adjacency lists, the complexity of DFS will be O(V + E), where V is the number of vertices, and E is the number of edges in the graph.
 
 <b> Space complexity </b>
 
-Для того, чтобы реализовать DFS без рекурсии, требуется стек, который будет в какой-то момент содержать все вершины графа.
-Также мы храним сам граф в виде списка списков.
-Следовательно, пространственная сложность будет O(V + E), где V - количество вершин, E — количество ребер в графе.
-
+To implement DFS without recursion, a stack is required, which will, at some point, contain all the vertices of the graph. Additionally, we store the graph as a list of lists. Therefore, the spatial complexity will be O(V + E), where V is the number of vertices, and E is the number of edges in the graph.
 
 
 </details>
@@ -929,9 +879,9 @@ E — количество ребер в графе.
 
 <a href="LevenshteinDistance.java">Code</a>
 
-Расстоянием Левенштейна между двумя строками s и t называется количество атомарных изменений, с помощью которых можно одну строку превратить в другую. Под атомарными изменениями подразумеваются: удаление одного символа, вставка одного символа, замена одного символа на другой.
+The Levenshtein distance between two strings, s and t, is defined as the number of atomic changes required to transform one string into the other. Atomic changes include deleting one character, inserting one character, and replacing one character with another.
 
-Найдите расстояние Левенштейна для предложенной пары строк.
+Find the Levenshtein distance for the given pair of strings.
 
 <table>
     <tbody>
@@ -954,41 +904,38 @@ E — количество ребер в графе.
 
 <b>Input format</b>
 
-В первой строке дана строка s, во второй — строка t. Длины обеих строк не превосходят 1000. Строки состоят из маленьких латинских букв.
+The first line contains the string "s," and the second line contains the string "t." The lengths of both strings do not exceed 1000. The strings consist of lowercase Latin letters.
 
 <b>Output format</b>
 
-Выведите единственное число — расстояние между строками.
+Output a single number — the distance between the strings.
 
 <b> Work principle </b>
 
 
-Нам нужна двумерная матрица, но, так как подсчеты ведутся по последнему ряду, будем хранить только его.<br>
-Базовый случай — dp[j] = j. Заполняем так первый ряд. Далее нулевой элемент будет равен i -> порядковому номеру цикла.<br>
-Переход динамики — сравниваем значения currentDp[j-1] + 1, dp[j] + 1 и dp[j-1] + 1 (если буквы не равны) / dp[j-1] (если равны).<br>
-Выбираем самое минимальное число.<br>
-Ответ на исходный вопрос будет содержаться в ячейке dp [длина второго слова].
+We need a two-dimensional matrix, but since the calculations are done along the last row, we will only store it.
+The base case is dp[j] = j. Fill in the first row like this. Then the zero element will be equal to i -> the ordinal number of the loop.
+The transition of the dynamics is to compare the values currentDp[j-1] + 1, dp[j] + 1, and dp[j-1] + 1 (if the letters are not equal) / dp[j-1] (if they are equal).
+Choose the smallest number.
+The answer to the original question will be contained in the cell dp[length of the second word].
 
 
 <b> The proof of correctness </b>
 
-Первая строка, dp[j] = j -> чтобы получить строку из пустой, нужно провести j операций вставки
-Первый символ последующих строк dp[0] = i -> чтобы получить пустую строку из текущей, нужно провести i операций удаления.
+The first line, dp[j] = j -> to get a string from an empty one, you need to perform j insertion operations. The first symbol of subsequent lines dp[0] = i -> to get an empty string from the current one, you need to perform i deletion operations.
 
-Если обе строки не пустые:
-- если символы равны, значит мы не меняли последний символ, то есть выполнили D(i - 1, j - 1) операций
-- если не равны, то последний символ меняли один раз, значит D(i - 1, j - 1) + 1.
+If both strings are not empty:
+- If the characters are equal, it means we haven't changed the last character, so we performed D(i - 1, j - 1) operations.
+- If they are not equal, then we changed the last character once, so it's D(i - 1, j - 1) + 1.
 
 
 <b> Time complexity </b>
 
-Для вычисления используем цикл в цикле по размеру каждой из исследуемых строк (n и m). Сложность O(n * m).
+To calculate, we use a nested loop based on the size of each of the strings being investigated (n and m). The complexity is O(n * m).
 
 <b> Space complexity </b>
 
-Требуется дополнительный массив dp, длина которого равна длине одной из рассматриваемых строк (n). Также храним
-в памяти временный массив для заполнения нового ряда (n) и сами строки (n и m). Сложность O(3n + m) -> O(n + m).
-
+A supplementary array `dp` is required, with a length equal to the length of one of the strings being considered (n). We also store a temporary array in memory to fill the new row (n) and the actual strings (n and m). The complexity is O(3n + m) -> O(n + m).
 
 </details>
 
@@ -999,8 +946,7 @@ E — количество ребер в графе.
 
 <a href="SameSums.java">Code</a>
 
-На Алгосах устроили турнир по настольному теннису. Гоша выиграл n партий, получив при этом некоторое количество очков за каждую из них.<br>
-Гоше стало интересно, можно ли разбить все заработанные им во время турнира очки на две части так, чтобы сумма в них была одинаковой.
+Algos organized a table tennis tournament. Gosha won n matches, earning a certain number of points for each of them. Gosha became curious whether it is possible to split all the points he earned during the tournament into two parts so that the sum in each part is the same.
 
 <table>
     <tbody>
@@ -1023,31 +969,27 @@ E — количество ребер в графе.
 
 <b>Input format</b>
 
-В первой строке записано целое число n (0 ≤ n ≤ 300) –— количество выигранных партий.
+The first line contains an integer n (0 ≤ n ≤ 300), which is the number of won matches.
 
-Во второй строке через пробел записано n целых неотрицательных чисел, каждое из которых не превосходит 300 –— заработанные в партиях очки.
+The second line contains n non-negative integers separated by a space, each of which does not exceed 300, representing the points earned in each match.
 
 <b>Output format</b>
 
-Нужно вывести True, если произвести такое разбиение возможно, иначе —– False
+You need to output True if it is possible to make such a split, otherwise, output False.
 
 <b> Work principle </b>
 
 
-В массиве dp хранится информация о том, можно или нет составить из элементов массива numbers число, равное индексу
-текущего элемента i. Массив dp содержит количество значений, равное половине суммы всех чисел массива numbers(median) + 1.<br>
-Базовый случай — dp[0] = true.<br>
-Переход динамики — для каждого элемента из numbers проходим по dp. Если элемент dp[i] = true, прибавляем текущий элемент
-из numbers к i.<br>
-Ответ на исходный вопрос будет содержаться в ячейке dp[median].
+The array `dp` stores information about whether it is possible or not to compose a number equal to the index of the current element i from the elements of the `numbers` array. The `dp` array contains the count of values equal to half the sum of all numbers in the `numbers` array (median) + 1.
+The base case is dp[0] = true.
+The dynamic transition is as follows: for each element from `numbers`, iterate through `dp`. If dp[i] = true, add the current element from `numbers` to i.
+The answer to the original question will be contained in the dp[median] cell.
 
 
 
 <b> The proof of correctness </b>
 
-Если элемент dp[i] = true, значит из чисел можно составить сумму i без учета текущего числа. Добавляем к i текущее число,
-если не выходит за границы массива, отмечаем в dp. В итоге после прохождения по всем числам dp[median] = true, значит,
-нужную нам сумму составить возможно.
+If the element dp[i] = true, it means that it is possible to compose the sum i from the numbers without considering the current number. Add the current number to i if it does not go beyond the array boundaries, mark it in dp. In the end, after going through all the numbers, if dp[median] = true, it means that it is possible to compose the desired sum.
 
 
 
@@ -1055,12 +997,11 @@ E — количество ребер в графе.
 
 <b> Time complexity </b>
 
-Для вычисления проходимся для всех чисел (n) по массиву dp (m). Временная сложность O(n * m).
+To calculate, iterate over all numbers (n) through the dp array (m). The time complexity is O(n * m).
 
 <b> Space complexity </b>
 
-Храним все числа (n), также требуется массив dp для хранения результатов промежуточных вычислений (m).
-Пространственная сложность O(n + m).
+Store all numbers (n), and also require an array dp to store the results of intermediate calculations (m). The spatial complexity is O(n + m).
 
 </details>
 
@@ -1075,7 +1016,7 @@ E — количество ребер в графе.
 
 <a href="PackedPrefix.java">Code</a>
 
-Вам даны строки в запакованном виде. Определим запакованную строку (ЗС) рекурсивно. Строка, состоящая только из строчных букв английского алфавита является ЗС. Если A и B —– корректные ЗС, то и AB является ЗС. Если A —– ЗС, а n — однозначное натуральное число, то n[A] тоже ЗС. При этом запись n[A] означает, что при распаковке строка A записывается подряд n раз. Найдите наибольший общий префикс распакованных строк и выведите его (в распакованном виде).
+You are given strings in a packed form. Let's define a packed string (PS) recursively. A string consisting only of lowercase letters of the English alphabet is a PS. If A and B are correct PS, then AB is also a PS. If A is a PS and n is a single-digit natural number, then n[A] is also a PS. In this case, the notation n[A] means that when unpacking the string A, it is repeated n times in a row. Find the longest common prefix of unpacked strings and output it (in the unpacked form).
 
 <table>
     <tbody>
@@ -1102,47 +1043,39 @@ E — количество ребер в графе.
 
 <b>Input format</b>
 
-В первой строке записано число n (1 ≤ n ≤ 1000) –— число строк.
+The first line contains the number n (1 ≤ n ≤ 1000) — the number of strings.
 
-Далее в n строках записаны запакованные строки. Гарантируется, что эти строки корректны, то есть удовлетворяют указанному рекурсивному определению. Длина строк после распаковки не превосходит 10^5.
+Then, in the next n lines, there are packed strings. It is guaranteed that these strings are correct, meaning they satisfy the specified recursive definition. The length of the strings after unpacking does not exceed 10^5.
 
 <b>Output format</b>
 
-Выведите наибольший общий префикс распакованных строк.
-
+Output the largest common prefix of the unpacked strings.
 
 <b> Work principle </b>
 
 
-Чтобы распаковать строку, использую стек со списком чаров и стек с числами - количеством повторений.<br>
-Прохожусь по каждому символу в строке. Если это число, тогда добавляю в стек символов<br>
-новый список, а в стек чисел - это число. Если это символ, проверяю, есть ли в стеке элементы. Если он пустой,
-это значит, что текущий символ повторять не требуется, можно добавить его к финальному результату.<br>
-Если есть элементы, значит их нужно будет повторить, добавляю элемент к верхнему списку в стеке.<br>
-Если символ - закрывающая кавычка, то это значит, что нужно вытащить верхний список из стека и добавить
-к результирующей строке, повторив n раз.<br>
+To unpack the string, I use a stack with a list of characters and a stack with numbers - the number of repetitions. I go through each character in the string. If it is a number, then I add a new list to the stack of characters, and this number to the stack of numbers. If it is a character, I check if there are elements in the stack. If it is empty, it means that the current character does not need to be repeated, and I can add it to the final result. If there are elements, it means that they need to be repeated, so I add the character to the top list in the stack.
 
-Для определения общего префикса использую простой цикл по количеству символов в самой маленькой строке и счетчик. Если все символы равны, смотрим следующий. Если нет, то цикл разрывается, и выводится текущее значение счетчика.
+If the character is a closing bracket, it means that I need to extract the top list from the stack and add it to the resulting string, repeating it n times.
 
+To determine the common prefix, I use a simple loop based on the number of characters in the smallest string and a counter. If all characters are equal, I look at the next one. If not, the loop is broken, and the current value of the counter is output.
 
 <b> The proof of correctness </b>
 
-Для того, чтобы корректно распаковать строку, нам нужно использовать принцип LIFO, именно он и лежит в основе стека.
-
+To correctly unpack the string, we need to use the Last-In-First-Out (LIFO) principle, which is the foundation of a stack.
 
 
 
 <b> Time complexity </b>
 
-Для распаковки строки используем цикл по всем символам строки n.<br>
-Для поиска префикса - цикл по всем символам самой меньшей строки, которая будет также равна n.<br>
-Таким образом, временная сложность будет O(2n * x) -> O(n * x), где x - количество строк для сравнения, n - среднее количество символов в строке.
+To unpack the string, we use a loop over all characters of the string n.
+For finding the prefix, we use a loop over all characters of the smallest string, which will also be equal to n.
+Thus, the time complexity will be O(2n * x) -> O(n * x), where x is the number of strings to compare, and n is the average number of characters in a string.
 
 <b> Space complexity </b>
 
-Требуется стек чисел и стек символов, общее количество символов в которых будет n. Также мы храним результирующую строку в формате StringBuilder и список всех готовых строк для поиска префикса.<br>
-Пространственная сложность - O(x * n), где x - количество строк для сравнения, n - среднее количество символов в строке.
-
+We need a stack of numbers and a stack of characters, the total number of characters in which will be n. Also, we store the resulting string in a StringBuilder format and a list of all prepared strings for finding the prefix.
+The space complexity is O(x * n), where x is the number of strings to compare, and n is the average number of characters in a string.
 
 </details>
 
@@ -1153,11 +1086,9 @@ E — количество ребер в графе.
 
 <a href="Crib.java">Code</a>
 
-Вася готовится к экзамену по алгоритмам и на всякий случай пишет шпаргалки.
+Vasya is preparing for an algorithms exam and, just in case, is writing cheat sheets. To fit as much information as possible, he does not separate words with spaces. As a result, he gets one very long string. To avoid getting confused during the exam due to nervousness, he asks you to write a program that, given this long string and a set of permissible words, determines whether the text can be split into separate words from the set.
 
-Чтобы уместить на них как можно больше информации, он не разделяет слова пробелами. В итоге получается одна очень длинная строка. Чтобы на самом экзамене из-за нервов не запутаться в прочитанном, он просит вас написать программу, которая по этой длинной строке и набору допустимых слов определит, можно ли разбить текст на отдельные слова из набора.
-
-Более формально: дан текст T и набор строк s1, ... ,sn. Надо определить, представим ли T как sk1sk2...skr, где где ki — индексы строк. Индексы могут повторяться. Строка si может встречаться в разбиении текста T произвольное число раз. Можно использовать не все строки для разбиения. Строки могут идти в любом порядке.
+More formally: given the text T and a set of strings s1, ..., sn. It is necessary to determine whether T can be represented as sk1sk2...skr, where ki are the indices of strings. Indices can be repeated. String si can appear any number of times in the text T partitioning. It is not necessary to use all strings for the partitioning. Strings can appear in any order.
 
 <table>
     <tbody>
@@ -1188,46 +1119,38 @@ E — количество ребер в графе.
     </tbody>
 </table>
 
-<b>Input format</b>
+**Input format:**
 
-В первой строке дан текст T, который надо разбить на слова. Длина T не превосходит 100100. Текст состоит из строчных букв английского алфавита.
+The first line contains the text T that needs to be split into words. The length of T does not exceed 100100. The text consists of lowercase English letters.
 
-Во второй строке записано число допустимых к использованию слов 1 ≤ n ≤ 100.
+The second line contains the number of allowable words 1 ≤ n ≤ 100.
 
-В последующих n строках даны сами слова, состоящие из маленьких латинских букв. Длина каждого слова не превосходит 100.
+The next n lines contain the words themselves, consisting of lowercase Latin letters. The length of each word does not exceed 100.
 
-<b>Output format</b>
+**Output format:**
 
-Выведите «YES», если текст можно разбить на слова из данного словаря, или «NO» в ином случае.
+Output "YES" if the text can be split into words from the given dictionary, or "NO" otherwise.
 
-<b> Work principle </b>
+**Work principle:**
 
+Build a trie. Then, using it, iterate through the given set of characters using dynamic programming.
+The dp array will store a boolean value, which indicates whether the current character is a potential word start or not.
+Iterate through all characters in the set in a loop. If the current character is a potential word start, we need to find the beginning of the next word. First, set the current node of the tree as its root.
+Next, iterate through the loop, starting from the potential word start to the end of the array.
+If the character is in the Children of the current node, check if this character is the end of a word. If yes, set the next character as a potential word start in dp. If the character is not present, break the loop.
+In the end, if it is possible to form a chain of the specified words without gaps from the set of characters, then the last element in the dp array will be true.
 
-Строим префиксное дерево. Затем, используя его, проходимся по заданному набору символов с помощью динамического программирования.<br>
-В массиве dp будет храниться значение boolean, которое обозначает, является ли текущий символ потенциальным началом слова или нет.<br>
-Проходимся по всем символам заданного набора в цикле. Если текущий символ является потенциальным началом слова, нам нужно найти начало следующего слова. Сначала устанавливаем в качестве текущей ноды дерева его корень.<br>
-Дальше проходимся циклом, начиная от потенциального начала слова до конца массива.<br>
-Если символ есть в словаре Children текущей ноды, проверяем, является ли этот символ концом слова. Если да, устанавливаем следующий символ как потенциальное начало слова в dp. Если символа нет, цикл разрывается.<br>
-В итоге если из набора символов можно составить цепочку из указанных слов без разрывов, тогда последним элементом в массиве dp будет true.<br>
+**The proof of correctness:**
 
+We use a trie to save memory. If the isWord field is true, it means a correct word can be formed along the specified path.
+We use this to find all possible word options and the index of the potential beginning of a new word.
 
-<b> The proof of correctness </b>
+**Time complexity:**
 
-Мы используем префиксное дерево для экономии памяти. Если поле isWord равняется true, значит по указанному пути можно составить корректное слово.<br>
-Пользуемся этим для того, чтобы найти все возможные варианты слов и индекс потенциального начала нового слова.
+Building the trie requires O(n), where n is the total number of characters in all words. Searching for potential words requires two loops - the first one over all characters in the given sequence m, the second one inside the first over part of the sequence. In the worst case, searching for all potential words takes O(n^2).
 
+**Space complexity:**
 
-
-
-<b> Time complexity </b>
-
-Составление префиксного дерева требует O(n), где n - общее количество символов во всех словах. Поиск потенциальных слов требует два цикла - первый
-по всем символам заданной последовательности m, второй внутри первого по части последовательности. В худшем случае поиск всех потенциальных слов занимает O(n^2).
-
-<b> Space complexity </b>
-
-Требуется дополнительная память требуется для хранения исследуемой строки и всех потенциальных слов в виде дерева. Размер дерева - O(n * m), где n - максимальная длина слова, а m - количество букв в алфавите.
-
-
+Additional memory is required to store the examined string and all potential words in the form of a tree. The size of the tree is O(n * m), where n is the maximum length of a word, and m is the number of letters in the alphabet.
 
 </details>
