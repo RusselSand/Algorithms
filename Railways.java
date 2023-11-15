@@ -2,8 +2,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-
-
 public class Railways {
     public static List<Integer>[] graph;
     public static int[] colors;
@@ -17,7 +15,6 @@ public class Railways {
             System.out.println("NO");
         }
     }
-
     public static boolean DFS(int startVertex){
         Stack<Integer> stack = new Stack<>();
         stack.push(startVertex);
@@ -41,7 +38,6 @@ public class Railways {
         }
         return true;
     }
-
     public static boolean checkGraph(){
         for (int i = 0; i < graph.length; i++) {
             if (colors[i] == 0) {
@@ -52,8 +48,6 @@ public class Railways {
         }
         return true;
     }
-
-
     private static void getGraph(){
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
             int cities = Integer.parseInt(reader.readLine());

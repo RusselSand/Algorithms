@@ -1,13 +1,7 @@
 import java.io.*;
-
 import java.util.*;
-
 import java.util.stream.Collectors;
-
-
-
 public class SameSums {
-
     public static void main(String[] args){
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
             int n = Integer.parseInt(reader.readLine());
@@ -22,8 +16,6 @@ public class SameSums {
             System.out.println(ex.getMessage());
         }
     }
-
-
     private static boolean partIsPossible(int n, List<Integer> numbers){
         int sumNumbers = numbers.stream().mapToInt(Integer::intValue).sum();
         if(sumNumbers % 2 != 0){

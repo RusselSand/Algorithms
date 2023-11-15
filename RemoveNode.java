@@ -1,9 +1,5 @@
-import org.w3c.dom.Node;
-
 public class RemoveNode {
     public static Node remove(Node root, int key) {
-        // Your code
-        // “ヽ(´▽｀)ノ”
         if(root == null){
             return root;
         }
@@ -86,33 +82,26 @@ public class RemoveNode {
         private int value;
         private Node left;
         private Node right;
-
         Node(Node left, Node right, int value) {
             this.left = left;
             this.right = right;
             this.value = value;
         }
-
         public int getValue() {
             return value;
         }
-
         public Node getRight() {
             return right;
         }
-
         public void setRight(Node right) {
             this.right = right;
         }
-
         public Node getLeft() {
             return left;
         }
-
         public void setLeft(Node left) {
             this.left = left;
         }
-
         public void setValue(int value) {
             this.value = value;
         }

@@ -7,7 +7,6 @@ import java.util.List;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.Collections;
-
 public class SleightOfHand {
     public static void main(String[] args) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -30,11 +29,9 @@ public class SleightOfHand {
         }
         return result;
     }
-
     private static int readInt(BufferedReader reader) throws IOException {
         return Integer.parseInt(reader.readLine());
     }
-
     private static List<String> readList(BufferedReader reader) throws IOException {
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < 4; i++) {

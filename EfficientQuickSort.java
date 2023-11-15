@@ -4,39 +4,29 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-
 public class EfficientQuickSort {
     private static class User{
         private final String name;
         private final int numberOfTasks;
         private final int penalty;
-
         @Override
         public String toString() {
             return name;
         }
-
         public String getName() {
             return name;
         }
-
         public int getNumberOfTasks() {
             return numberOfTasks;
         }
-
-
         public int getPenalty() {
             return penalty;
         }
-
         public User(String name, int numberOfTasks, int penalty) {
             this.name = name;
             this.numberOfTasks = numberOfTasks;
             this.penalty = penalty;
         }
-
-
         public int compareTo(User user){
             if(this.numberOfTasks != user.getNumberOfTasks()){
                 return this.numberOfTasks - user.getNumberOfTasks();
@@ -47,7 +37,6 @@ public class EfficientQuickSort {
             return user.getName().compareTo(this.name);
         }
     }
-
     public static void main(String[] args) throws IOException {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
             int number = Integer.parseInt(reader.readLine());

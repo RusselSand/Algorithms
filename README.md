@@ -51,7 +51,7 @@ For each of the plots, output the distance to the nearest zero. Output the dista
 <b>Sleight of hand</b>
 </summary>
 
-<a href="NearestNull.java">Code</a>
+<a href="SleightOfHand.java">Code</a>
 
 The game "Typing Speed Trainer" is a 4x4 grid of keys, each key containing either a dot or a digit from one to nine. The essence of the game is as follows: in each round, a combination of digits and dots appears on the field. At time t, the player must simultaneously press all the keys with the digit t.
 
@@ -96,8 +96,6 @@ Find the number of points that Gosha and Timofey can earn if they press the keys
 </table>
 
 <b>Input format</b>
-
-В первой строке дано целое число k (1 ≤ k ≤ 5).
 
 In the first line, an integer k is given (1 ≤ k ≤ 5).
 
@@ -169,17 +167,11 @@ Output the result of each command on a separate line. For successful push_back(x
 
 <b> Work principle </b>
 
-Использую кольцевой буфер, как и было указано в условии. Реализованы методы
-pop_front, pop_back(), push_front(int number) и push_back(int number).
-
-
+Using a circular buffer, as specified in the task. Implemented methods pop_front, pop_back(), push_front(int number), and push_back(int number).
 
 <b> The proof of correctness </b>
 
-
 For operations involving adding to the tail and removing from the head, we move clockwise. Therefore, the index is calculated as the remainder of division by the maximum. For operations involving adding to the head and removing from the tail, we move counterclockwise. Therefore, the index is calculated as n - 1, except when n = 0, as Java does not handle negative indices like Python.
-
-
 
 <b> Time complexity </b>
 

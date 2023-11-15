@@ -5,24 +5,16 @@ public class ExpensiveNet {
     public static class Edge {
         private int end;
         private int weight;
-
-
         public Edge(Integer end, Integer weight) {
             this.end = end;
             this.weight = weight;
         }
-
-
         public int getWeight() {
             return weight;
         }
-
-
         public int getEnd() {
             return end;
         }
-
-
         public int compare(Edge e) {
             return e.getWeight() - this.getWeight();
         }
@@ -41,7 +33,6 @@ public class ExpensiveNet {
             System.out.println(max.getAsInt());
         }
     }
-
     private static void getGraph() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String[] args = reader.readLine().split(" ");
@@ -61,7 +52,6 @@ public class ExpensiveNet {
             System.out.println(ex.getMessage());
         }
     }
-
     private static OptionalInt getSpanningTree() {
         int mstLength = 0;
         added = new int[graph.length];
@@ -84,8 +74,6 @@ public class ExpensiveNet {
             return OptionalInt.of(mstLength);
         }
     }
-
-
     private static void addToEdges(int vertex) {
         for (int i = 0; i < graph.length; i++) {
             if (graph[vertex][i] != null && added[i] != 1) {

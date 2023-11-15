@@ -1,8 +1,6 @@
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
-
-
 public class SearchSystem {
     public static void main(String[] args) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -20,7 +18,6 @@ public class SearchSystem {
             }
         }
     }
-
     public static void findRelevant(HashMap<String, HashMap<Integer, Integer>> preparedData, String request, int n, BufferedWriter writer) throws IOException {
         Map<Integer, Integer> result = new HashMap<>();
         Set<String> requestSet = Arrays.stream(request.split(" ")).collect(Collectors.toSet());
@@ -43,7 +40,6 @@ public class SearchSystem {
             result.remove(maxKey);
         }
     }
-
     public static Integer getMax(Map<Integer, Integer> result){
         Integer maxKey = 0;
         Integer maxValue = 0;
@@ -59,7 +55,6 @@ public class SearchSystem {
         }
         return maxKey;
     }
-
     public static HashMap<String, HashMap<Integer, Integer>> prepareData(List<String> docs){
         HashMap<String, HashMap<Integer, Integer>> preparedData = new HashMap<>();
         for (int i = 0; i < docs.size(); i++) {

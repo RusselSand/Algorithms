@@ -15,13 +15,9 @@ public class HeapSort {
             this.problemsCount = Integer.parseInt(data[1]);
             this.penalty = Integer.parseInt(data[2]);
         }
-
-
         private String getName(){
             return name;
         }
-
-
         public int compareTo(Participant participant){
             if(this.problemsCount != participant.problemsCount){
                 return this.problemsCount - participant.problemsCount;
@@ -32,8 +28,6 @@ public class HeapSort {
             return participant.getName().compareTo(this.name);
         }
     }
-
-
     public static void main(String[] args) throws IOException {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out))){
@@ -50,21 +44,16 @@ public class HeapSort {
             }
         }
     }
-
-
     public static void add(Participant participant){
         participants.add(participant);
         int index = participants.size() - 1;
         siftUp(index);
     }
-
-
     public static void delete(){
         participants.set(1, participants.get(participants.size()-1));
         participants.remove(participants.size()-1);
         siftDown(1);
     }
-
     public static void siftUp(int index){
         while(true){
             int parentIndex = index/2;
@@ -75,8 +64,6 @@ public class HeapSort {
             index = parentIndex;
         }
     }
-
-
     public static void siftDown(int index){
         while (true){
             int left = 2 * index;

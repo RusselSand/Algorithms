@@ -6,9 +6,7 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
 public class NearestNull {
-
     public static void main(String[] args) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
              BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out))) {
@@ -20,7 +18,6 @@ public class NearestNull {
             }
         }
     }
-
     private static List<Integer> findZero(int n, List<Integer> arr) {
         int zeroInd = -1;
         int zeroIndRev = -1;
@@ -53,7 +50,6 @@ public class NearestNull {
     private static int readInt(BufferedReader reader) throws IOException {
         return Integer.parseInt(reader.readLine());
     }
-
     private static List<Integer> readList(BufferedReader reader) throws IOException {
         return Arrays.stream(reader.readLine().split(" "))
                 .map(Integer::parseInt)

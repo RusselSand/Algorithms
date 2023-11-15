@@ -1,6 +1,3 @@
-
-
-
 public class BrokenSearch {
     public static int brokenSearch(int[] arr, int k) {
         int start = findStart(arr, 0, arr.length-1);
@@ -10,7 +7,6 @@ public class BrokenSearch {
             return binarySearch(arr, k, start, arr.length);
         }
     }
-
     public static int findStart(int[] arr, int left, int right){
         if(arr.length == 1 || arr[0] < arr[arr.length-1]){
             return 0;
@@ -25,7 +21,6 @@ public class BrokenSearch {
             return findStart(arr, mid + 1, right);
         }
     }
-
     public static int binarySearch(int[] arr, int x, int left, int right) {
         if (right <= left) {
             return -1;
@@ -39,7 +34,6 @@ public class BrokenSearch {
             return binarySearch(arr, x, mid + 1, right);
         }
     }
-
     private static void test() {
         int[] arr = {19, 21, 100, 101, 1, 4, 5, 7, 12};
         assert 6 == brokenSearch(arr, 5);

@@ -1,21 +1,15 @@
 import java.io.*;
 import java.util.Objects;
 import java.util.OptionalInt;
-
 public class HashTable {
-
     static class Pair {
         public Integer key;
         public Integer value;
-
-
         public Pair(Integer key, Integer value){
             this.key = key;
             this.value = value;
         }
     }
-
-
     static class Node{
         public Pair value;
         public Node next;
@@ -26,9 +20,6 @@ public class HashTable {
             this.value = value;
         }
     }
-
-
-
     private static final Node[] pairs = new Node[131072];
     public static void main(String[] args) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -40,8 +31,6 @@ public class HashTable {
             }
         }
     }
-
-
     public static void doCommand(String command, BufferedWriter writer) throws IOException{
         String[] commandValues = command.split(" ");
         OptionalInt result;
@@ -58,9 +47,6 @@ public class HashTable {
                 put(Integer.parseInt(commandValues[1]), Integer.parseInt(commandValues[2]));
         }
     }
-
-
-
     private static void print(BufferedWriter writer, OptionalInt result) throws IOException {
         if(result.isPresent()){
             writer.write(Integer.toString(result.getAsInt()));
@@ -69,9 +55,6 @@ public class HashTable {
         }
         writer.newLine();
     }
-
-
-
     private static int getSize(int operations){
         int n = 1;
         while(operations > 2){
@@ -80,7 +63,6 @@ public class HashTable {
         }
         return n;
     }
-
     private static OptionalInt get(Integer key){
         int bucket = getBucket(key);
         Node search = getNode(key, bucket);
@@ -89,9 +71,6 @@ public class HashTable {
         }
         return OptionalInt.of(search.value.value);
     }
-
-
-
     private static Node getNode(Integer key, int bucket){
         if(pairs[bucket] == null){
             return null;
@@ -105,8 +84,6 @@ public class HashTable {
         }
         return null;
     }
-
-
     private static OptionalInt delete(Integer key){
         int bucket = getBucket(key);;
         if(pairs[bucket] == null){
@@ -129,8 +106,6 @@ public class HashTable {
         }
         return OptionalInt.empty();
     }
-
-
     private static void put(Integer key, Integer value){
         int bucket = getBucket(key);
         Node search = getNode(key, bucket);
@@ -145,8 +120,6 @@ public class HashTable {
         }
         pairs[bucket] = node;
     }
-
-
     private static int getBucket(Integer key){
         return (pairs.length - 1) & key;
     }

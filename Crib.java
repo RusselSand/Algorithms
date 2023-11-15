@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-
 public class Crib {
     public static Trie trie;
     public static void main(String[] args){
@@ -21,8 +20,6 @@ public class Crib {
             System.out.println(ex.getMessage());
         }
     }
-
-
     public static boolean check(String init){
         char[] letters = init.toCharArray();
         boolean[] dp = new boolean[letters.length + 1];
@@ -45,8 +42,6 @@ public class Crib {
         }
         return dp[letters.length];
     }
-
-
     public static class Trie {
         private TrieNode root;
         public Trie(){
@@ -73,16 +68,13 @@ public class Crib {
             children = new HashMap<>();
         }
 
-
         public HashMap<Character, TrieNode> getChildren() {
             return children;
         }
 
-
         public boolean isWord() {
             return isWord;
         }
-
 
         public void setWord(boolean word) {
             isWord = word;

@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-
 public class PackedPrefix {
     public static void main(String[] args){
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -25,7 +24,6 @@ public class PackedPrefix {
             System.out.println(ex.getMessage());
         }
     }
-
     public static String openString(String s){
         Stack<Integer> numbers = new Stack<>();
         Stack<List<Character>> letters = new Stack<>();
@@ -61,7 +59,6 @@ public class PackedPrefix {
         }
         return result.toString();
     }
-
     public static void prefix(String[] data, int min, BufferedWriter writer) throws IOException {
         for (int i = 0; i < min; i++) {
             char letter = data[0].charAt(i);
