@@ -9,12 +9,14 @@ public class PackedPrefix {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out))){
             int n = Integer.parseInt(reader.readLine());
             String[] data = new String[n];
-            int min = 0;
             for (int i = 0; i < n; i++) {
                 String raw = reader.readLine();
                 data[i] = openString(raw);
+            }
+            int min = data[0].length();
+            for (int i = 0; i < n; i++) {
                 int x = data[i].length();
-                if(min == 0 || x < min){
+                if(x < min) {
                     min = x;
                 }
             }
@@ -23,7 +25,6 @@ public class PackedPrefix {
             System.out.println(ex.getMessage());
         }
     }
-
 
     public static String openString(String s){
         Stack<Integer> numbers = new Stack<>();
@@ -60,7 +61,6 @@ public class PackedPrefix {
         }
         return result.toString();
     }
-
 
     public static void prefix(String[] data, int min, BufferedWriter writer) throws IOException {
         for (int i = 0; i < min; i++) {
