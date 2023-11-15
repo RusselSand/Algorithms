@@ -22,3 +22,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+*.iml
+out/production/Algorithms/.idea/inspectionProfiles/Project_Default.xml
+out/production/Algorithms/.idea/kotlinc.xml
+out/production/Algorithms/.idea/libraries/KotlinJavaRuntime.xml
+out/production/Algorithms/.idea/misc.xml
+out/production/Algorithms/.idea/modules.xml
